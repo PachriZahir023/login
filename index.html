@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Login UI</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* Background Glow */
+    body::before,
+    body::after{
+      content:'';
+      position:absolute;
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      filter:blur(100px);
+      opacity:0.5;
+    }
+
+    body::before{
+      background:#3b82f6;
+      top:-100px;
+      left:-100px;
+    }
+
+    body::after{
+      background:#9333ea;
+      bottom:-100px;
+      right:-100px;
+    }
+
+    .login-container{
+      width:380px;
+      padding:40px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      border:1px solid rgba(255,255,255,0.15);
+      box-shadow:
+        0 10px 40px rgba(0,0,0,0.3),
+        inset 0 0 20px rgba(255,255,255,0.05);
+      color:white;
+      position:relative;
+      z-index:2;
+      animation:fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .login-container h1{
+      text-align:center;
+      font-size:32px;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .subtitle{
+      text-align:center;
+      color:#cbd5e1;
+      font-size:14px;
+      margin-bottom:30px;
+    }
+
+    .input-group{
+      margin-bottom:22px;
+      position:relative;
+    }
+
+    .input-group input{
+      width:100%;
+      padding:15px 50px 15px 15px;
+      border:none;
+      outline:none;
+      border-radius:14px;
+      background:rgba(255,255,255,0.12);
+      color:white;
+      font-size:15px;
+      transition:0.3s;
+      border:1px solid transparent;
+    }
+
+    .input-group input::placeholder{
+      color:#cbd5e1;
+    }
+
+    .input-group input:focus{
+      border:1px solid #60a5fa;
+      background:rgba(255,255,255,0.16);
+      box-shadow:0 0 15px rgba(96,165,250,0.5);
+    }
+
+    .icon{
+      position:absolute;
+      right:15px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:18px;
+    }
+
+    .options{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:25px;
+      font-size:13px;
+      color:#cbd5e1;
+    }
+
+    .options a{
+      color:#93c5fd;
+      text-decoration:none;
+    }
+
+    .options a:hover{
+      text-decoration:underline;
+    }
+
+    .login-btn{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,#3b82f6,#9333ea);
+      color:white;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 5px 20px rgba(59,130,246,0.4);
+    }
+
+    .login-btn:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 8px 25px rgba(147,51,234,0.5);
+    }
+
+    .social-login{
+      margin-top:25px;
+      text-align:center;
+    }
+
+    .social-login p{
+      font-size:13px;
+      color:#cbd5e1;
+      margin-bottom:15px;
+    }
+
+    .social-icons{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+    }
+
+    .social-icons button{
+      width:50px;
+      height:50px;
+      border:none;
+      border-radius:15px;
+      background:rgba(255,255,255,0.12);
+      color:white;
+      font-size:20px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .social-icons button:hover{
+      transform:translateY(-5px);
+      background:rgba(255,255,255,0.2);
+    }
+
+    .register{
+      margin-top:25px;
+      text-align:center;
+      font-size:14px;
+      color:#cbd5e1;
+    }
+
+    .register a{
+      color:#93c5fd;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .message{
+      margin-top:18px;
+      text-align:center;
+      font-size:14px;
+      font-weight:500;
+    }
+
+    @media(max-width:450px){
+      .login-container{
+        width:90%;
+        padding:30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Silakan login untuk melanjutkan</p>
+
+    <div class="input-group">
+      <input type="text" id="username" placeholder="Username">
+      <span class="icon">👤</span>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Password">
+      <span class="icon">🔒</span>
+    </div>
+
+    <div class="options">
+      <label>
+        <input type="checkbox">
+        Remember me
+      </label>
+
+      <a href="#">Forgot Password?</a>
+    </div>
+
+    <button class="login-btn" onclick="login()">
+      Login
+    </button>
+
+    <div class="message" id="message"></div>
+
+    <div class="social-login">
+      <p>Atau login dengan</p>
+
+      <div class="social-icons">
+        <button>G</button>
+        <button>F</button>
+        <button></button>
+      </div>
+    </div>
+
+    <div class="register">
+      Belum punya akun?
+      <a href="#">Daftar Sekarang</a>
+    </div>
+  </div>
+
+  <script>
+    function login(){
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const message = document.getElementById("message");
+
+      if(username === "" || password === ""){
+        message.style.color = "#f87171";
+        message.innerHTML = "⚠️ Username dan password wajib diisi!";
+      }
+      else if(username === "admin" && password === "12345"){
+        message.style.color = "#4ade80";
+        message.innerHTML = "✅ Login berhasil!";
+
+        setTimeout(() => {
+          alert("Selamat datang " + username + "!");
+        }, 500);
+      }
+      else{
+        message.style.color = "#f87171";
+        message.innerHTML = "❌ Username atau password salah!";
+      }
+    }
+  </script>
+
+</body>
+</html>
